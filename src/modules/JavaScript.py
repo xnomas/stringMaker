@@ -40,7 +40,7 @@ class JavaScript(object):
 
 	
 	def urlEncode(self) -> str:
-		return f"decodeURIComponent({quote_plus(self.string)})"
+		return f"decodeURIComponent('{quote_plus(self.string)}')"
 
 
 	def fromHex(self) -> str:
@@ -50,7 +50,3 @@ class JavaScript(object):
 		hexes = ''.join([str(hex(ord(x)).strip('0x')) for x in self.string])
 
 		return f'{func};h({hexes})'
-
-
-j = JavaScript("alert(1)")
-print(j.fromHex())
