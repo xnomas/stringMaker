@@ -34,7 +34,7 @@ optional arguments:
 ```
 To enter interpreter mode use `python stringMaker.py --interpreter`:
 
-![interpreter](img\interpreter.png)
+![interpreter](https://github.com/xnomas/stringMaker/blob/main/img/interpreter.png)
 
 ## Suggestions
 
