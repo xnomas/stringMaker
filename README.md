@@ -38,7 +38,7 @@ To enter interpreter mode use `python stringMaker.py --interpreter`:
 
 ## Suggestions
 
-If you have a suggestion, feel free to open an [issue](https://github.com/xnomas/stringMaker/issues) or see the [discussions tab](https://github/xnomas/stringMaker/discussions).
+If you have a suggestion, feel free to open an [issue](https://github.com/xnomas/stringMaker/issues) or see the [discussions tab](https://github.com/xnomas/stringMaker/discussions).
 
 
 ## Contributions
