@@ -34,9 +34,9 @@ class JavaScript(object):
 
 	def base64(self, url_safe : bool) -> str:
 		if not url_safe:
-			return f"atob({b64encode(bytes(self.string,'utf-8')).decode()})"
+			return f"atob('{b64encode(bytes(self.string,'utf-8')).decode()}')"
 		else:
-			return f"atob({urlsafe_b64encode(bytes(self.string,'utf-8')).decode()})"
+			return f"atob('{urlsafe_b64encode(bytes(self.string,'utf-8')).decode()}')"
 
 	
 	def urlEncode(self) -> str:
