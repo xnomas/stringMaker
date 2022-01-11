@@ -43,7 +43,7 @@ def parser() -> argparse.ArgumentParser:
         action="store_true",
     )
     parser.add_argument(
-        "--url-encode",
+        "--url-decode",
         help="represent the string URL encoded in given language",
         action="store_true",
     )

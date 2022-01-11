@@ -3,6 +3,7 @@ import cmd
 from re import match
 
 from modules.JavaScript import JavaScript
+from modules.PHP import PHP
 
 """
 Simple command processor, to be used when argparser is not present. Or for ease of use.
@@ -37,6 +38,7 @@ class Interpreter(cmd.Cmd):
             self.prompt = "JS > "
 
         elif match(r"[Pp]?[Hh][Pp]*", self.lang) is not None:
+            self.langObject = PHP("test")
             self.prompt = "PHP > "
 
     def do_use(self, arg):
@@ -58,7 +60,7 @@ class Interpreter(cmd.Cmd):
         print("prints the string in ascii form")
 
     def do_code(self, arg):
-        if self.lang == "JS" or self.lang == "JavaScript":
+        if match(r"[Jj]?([aAvV]{3}|())[Ss]", self.lang) is not None:
             self.langObject.string = str(arg)
             print(self.langObject.charCode(False))
         else:
@@ -82,7 +84,7 @@ class Interpreter(cmd.Cmd):
     def do_url(self, arg):
         if self.checkSet():
             self.langObject.string = str(arg)
-            print(self.langObject.urlEncode())
+            print(self.langObject.urlDecode())
         else:
             print(f"! no language set !")
 

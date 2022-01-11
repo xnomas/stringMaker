@@ -1,6 +1,7 @@
 import re
 
 from modules.JavaScript import JavaScript
+from modules.PHP import PHP
 from modules.interpreter import Interpreter, runInterpreter
 from modules.argument_parser import parser
 
@@ -17,19 +18,19 @@ def Main():
         "code_point": args.code_point,
         "b64": args.b64,
         "url_safe": args.url_safe,
-        "url_encode": args.url_encode,
+        "url_decode": args.url_decode,
         "hex": args.hex,
         "supported": args.supported,
     }
 
-    langs = {"JS": r"[Jj]?([aAvV]{3}|())[Ss]*", "PHP": r"[Pp]?[Hh][Pp]*"}
+    langs = {"JS": r"[Jj]?([aAvV]{3}|())[Ss].*", "PHP": r"[Pp]?[Hh][Pp].*"}
 
     # init the object in function scope
     langObj = None
     setLang = ""
 
     if settings["supported"]:
-        print("[?] Supported langs: JavaScript ")
+        print("[?] Supported langs: JavaScript PHP")
         return True
 
     if not settings["string"] and not settings["interpreter"]:
@@ -50,7 +51,7 @@ def Main():
         langObj = JavaScript(settings["string"])
         setLang = "JS"
     elif re.match(langs["PHP"], settings["lang"]) is not None:
-        langObj = None  # TODO
+        langObj = PHP(settings["string"])
         setLang = "PHP"
     else:
         print("[!] unknown language, use --supported")
@@ -70,8 +71,8 @@ def Main():
     elif settings["b64"] and settings["url_safe"]:
         print(langObj.base64(True))
 
-    if settings["url_encode"]:
-        print(langObj.url_encode())
+    if settings["url_decode"]:
+        print(langObj.urlDecode())
 
     return True
 
